@@ -534,10 +534,6 @@ function createEditModeHTML(record) {
                     <div class="form-section-title">Order Information</div>
                     <div class="edit-grid">
                         <div class="edit-field">
-                            <label>Work Order No. *</label>
-                            <input type="text" class="edit-input" data-field="workOrderNo" value="${escapeHtml(record.workOrderNo)}" required>
-                        </div>
-                        <div class="edit-field">
                             <label>Order Receive Date *</label>
                             <input type="date" class="edit-input" data-field="orderReceiveDate" value="${record.orderReceiveDate}" required>
                         </div>
