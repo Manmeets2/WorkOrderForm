@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Order Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="navbar">
+            <div class="navbar-left">
+                <img src="assest.png" alt="Company Logo" class="navbar-logo">
+            </div>
+        
+            <div class="navbar-center">
+                <h1>Work Order Management System</h1>
+            </div>
+        </header>
+        
+
+        <div class="main-content">
+            <!-- Form Section -->
+            <section class="form-section">
+                <div class="card">
+                    <h2>Create New Work Order</h2>
+                    <form id="dataForm" class="data-form">
+                        <!-- Order Information Section -->
+                        <div class="form-section-title">Order Information</div>
+                        <div class="form-grid">
+                            <!-- <div class="form-group">
+                                <label for="workOrderNo">Work Order No. *</label>
+                                <div class="autocomplete-container">
+                                    <input type="text" id="workOrderNo" name="workOrderNo" required 
+                                           placeholder="Enter work order number" autocomplete="off">
+                                    <div id="workOrderSuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div> -->
+
+                            <div class="form-group">
+                                <label for="orderReceiveDate">Order Receive Date *</label>
+                                <input type="date" id="orderReceiveDate" name="orderReceiveDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dealer">Dealer *</label>
+                                <div class="autocomplete-container">
+                                    <input type="text" id="dealer" name="dealer" required 
+                                           placeholder="Enter dealer name" autocomplete="off">
+                                    <div id="dealerSuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="customerName">Customer Name</label>
+                                <div class="autocomplete-container">
+                                    <input type="text" id="customerName" name="customerName" 
+                                           placeholder="Enter customer name" autocomplete="off">
+                                    <div id="customerSuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="poNo">PO No. *</label>
+                                <div class="autocomplete-container">
+                                    <input type="text" id="poNo" name="poNo" required 
+                                           placeholder="Enter PO number" autocomplete="off">
+                                    <div id="poNoSuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="orderValue">Order Value (₹) *</label>
+                                <input type="number" id="orderValue" name="orderValue" required 
+                                       placeholder="Enter order value" min="0" step="0.01">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="quantity">Quantity *</label>
+                                <input type="number" id="quantity" name="quantity" required 
+                                       placeholder="Enter quantity" min="1" step="0.01">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="totalAmount">Total Amount (₹) *</label>
+                                <input type="number" id="totalAmount" name="totalAmount" required 
+                                       placeholder="Auto-calculated" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="marketingLead">Marketing Lead *</label>
+                                <div class="autocomplete-container">
+                                    <input type="text" id="marketingLead" name="marketingLead" required 
+                                           placeholder="Enter marketing lead" autocomplete="off">
+                                    <div id="marketingLeadSuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="targetDispatchDate">Target Dispatch Date *</label>
+                                <input type="date" id="targetDispatchDate" name="targetDispatchDate" required>
+                            </div>
+                        </div>
+
+                        <!-- Product Details Section -->
+                        <div class="form-section-title">Product & Technical Details</div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="quantityProduct">Quantity Product / Technical Details</label>
+                                <textarea id="quantityProduct" name="quantityProduct" rows="2" 
+                                          placeholder="Enter product/technical details"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inverterTypeSelect">Inverter Type *</label>
+                                <select id="inverterTypeSelect" name="inverterTypeSelect">
+                                    <option value="">Select Inverter Type</option>
+                                    <option value="3PH HYD">3PH HYD</option>
+                                    <option value="1PH HYD">1PH HYD</option>
+                                    <option value="1PH OFG">1PH OFG</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                                <input type="text" id="inverterType" name="inverterType" required 
+                                       placeholder="Select or enter inverter type" autocomplete="off">
+                                <div class="autocomplete-container">
+                                    <div id="inverterTypeSuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="blocks">Blocks (A, B, C) </label>
+                                <select id="blocks" name="blocks" >
+                                    <option value="">Select Block</option>
+                                    <option value="A">Block A</option>
+                                    <option value="B">Block B</option>
+                                    <option value="C">Block C</option>
+                                    <option value="A,B">Block A, B</option>
+                                    <option value="A,C">Block A, C</option>
+                                    <option value="B,C">Block B, C</option>
+                                    <option value="A,B,C">Block A, B, C</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inverterTypeBattery">Inverter Type Battery *</label>
+                                <input type="text" id="inverterTypeBattery" name="inverterTypeBattery" required 
+                                       placeholder="Enter inverter type battery" autocomplete="off">
+                                <div class="autocomplete-container">
+                                    <div id="inverterTypeBatterySuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="modelNoSelect">Inverter Model*</label>
+                                <select id="modelNoSelect" name="modelNoSelect">
+                                    <option value="">Select Model</option>
+                                    <option>SunPunch Basic</option>
+                                    <option>SunPunch Basic Pro</option>
+                                    <option>SunPunch Premium</option>
+                                    <option>SunPunch Premium Pro</option>
+                                    <option>SunPunch TriMax</option>
+                                    <option>SunCumulus Basic</option>
+                                    <option>SunCumulus Basic Pro</option>
+                                    <option>SunCumulus Premium</option>
+                                    <option>SunCumulus Premium Pro</option>
+                                    <option>SunPunch TriMax</option>
+                                    <option>E-Cumulus Basic</option>
+                                    <option>E-Cumulus Basic Pro</option>
+                                    <option>E-Cumulus Premium</option>
+                                    <option>E-Cumulus Premium Pro</option>
+                                    <option>SunSense</option>
+                                    <option>SunGrab</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                                <input type="text" id="modelNo" name="modelNo" required 
+                                       placeholder="Select or enter model number" autocomplete="off">
+                                <div class="autocomplete-container">
+                                    <div id="modelNoSuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="rating">Rating *</label>
+                                <input type="text" id="rating" name="rating" required 
+                                       placeholder="Enter rating" autocomplete="off">
+                                <div class="autocomplete-container">
+                                    <div id="ratingSuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Customer Details Section -->
+                        <div class="form-section-title">Customer Details</div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="customerName">Customer Name</label>
+                                <div class="autocomplete-container">
+                                    <input type="text" id="customerName" name="customerName" 
+                                           placeholder="Enter customer name" autocomplete="off">
+                                    <div id="customerSuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="address">Address</label>
+                                <textarea id="address" name="address" rows="2" 
+                                          placeholder="Enter customer address"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <div class="autocomplete-container">
+                                    <input type="text" id="state" name="state" 
+                                           placeholder="Enter state" autocomplete="off">
+                                    <div id="stateSuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <div class="autocomplete-container">
+                                    <input type="text" id="city" name="city" 
+                                           placeholder="Enter city" autocomplete="off">
+                                    <div id="citySuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phoneCode">Phone Code</label>
+                                <div class="autocomplete-container">
+                                    <input type="text" id="phoneCode" name="phoneCode" 
+                                           placeholder="Enter phone code" autocomplete="off">
+                                    <div id="phoneCodeSuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pinCode">PIN Code</label>
+                                <div class="autocomplete-container">
+                                    <input type="text" id="pinCode" name="pinCode" 
+                                           placeholder="Enter PIN code" autocomplete="off" maxlength="6" pattern="[0-9]{6}">
+                                    <div id="pinCodeSuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gstNo">Email</label>
+                                <div class="autocomplete-container">
+                                    <input type="text" id="gstNo" name="gstNo" 
+                                           placeholder="Enter GST number" autocomplete="off">
+                                    <div id="gstNoSuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gstNo">GST No.</label>
+                                <div class="autocomplete-container">
+                                    <input type="text" id="gstNo" name="gstNo" 
+                                           placeholder="Enter GST number" autocomplete="off">
+                                    <div id="gstNoSuggestions" class="autocomplete-suggestions"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Save Work Order</button>
+                            <button type="button" class="btn btn-secondary" id="clearForm">Clear Form</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Records Section -->
+            <section class="records-section">
+                <div class="card">
+                    <div class="section-header">
+                        <h2>Work Orders</h2>
+                        <div class="filter-controls">
+                            <select id="filterType" class="filter-select">
+                                <option value="all">All Orders</option>
+                                <option value="today">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                                <option value="year">This Year</option>
+                            </select>
+                            <button id="exportBtn" class="btn btn-success">Export CSV</button>
+                        </div>
+                    </div>
+
+                    <div id="recordsList" class="records-list">
+                        <div class="empty-state">
+                            <p>No work orders yet. Create your first work order above.</p>
+                        </div>
+                    </div>
+
+                    <div id="recordCount" class="record-count"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
